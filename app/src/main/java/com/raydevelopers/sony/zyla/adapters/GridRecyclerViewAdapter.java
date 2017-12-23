@@ -13,6 +13,8 @@ import com.raydevelopers.sony.zyla.databinding.GridRvLayoutBinding;
 import com.raydevelopers.sony.zyla.models.SongDetails;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by SONY on 22-12-2017.
@@ -22,6 +24,7 @@ public class GridRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerVi
 Context mContext;
     ArrayList<SongDetails> arrayList;
     String artist;
+    Set<String> hashset=new HashSet<>();
     public  GridRecyclerViewAdapter(Context c,ArrayList<SongDetails> l,String s)
     {
         this.mContext=c;
@@ -38,10 +41,12 @@ Context mContext;
 
     @Override
     public void onBindViewHolder(GridRecyclerViewAdapter.MyViewHolder holder, int position) {
+
         for(int i=0;i<arrayList.size();i++)
         {
             if(arrayList.get(i).getmArtist().equals(artist))
             {
+                System.out.println(artist);
 
                 SongDetails s=arrayList.get(position);
 

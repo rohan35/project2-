@@ -27,6 +27,7 @@ public class VerticalRecyclerViewAdapter extends RecyclerView.Adapter<VerticalRe
     HashMap<String,ArrayList<SongDetails>> hashMap=new HashMap<>();
 
 
+
     public VerticalRecyclerViewAdapter(Context c,ArrayList<SongDetails> details)
     {
         this.mContext=c;
@@ -48,10 +49,7 @@ public class VerticalRecyclerViewAdapter extends RecyclerView.Adapter<VerticalRe
 SongDetails song=list.get(position);
 
         holder.binding.setSong(song);
-        if(!hashMap.containsKey(song.getmName()))
-        {
 
-        }
         GridRecyclerViewAdapter recyclerViewAdapter=new GridRecyclerViewAdapter(mContext,list,song.getmArtist());
         GridLayoutManager gridLayoutManager=new GridLayoutManager(mContext,2,LinearLayoutManager.VERTICAL,false);
         holder.binding.gridRv.setLayoutManager(gridLayoutManager);

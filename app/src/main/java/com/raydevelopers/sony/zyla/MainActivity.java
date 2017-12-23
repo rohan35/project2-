@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.raydevelopers.sony.zyla.adapters.VerticalRecyclerViewAdapter;
 import com.raydevelopers.sony.zyla.models.SongDetails;
@@ -17,10 +19,11 @@ import com.raydevelopers.sony.zyla.models.SongDetails;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     ArrayList<SongDetails> list;
     RecyclerView recyclerView;
     VerticalRecyclerViewAdapter adapter;
@@ -31,7 +34,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         recyclerView=(RecyclerView)findViewById(R.id.vertical_rv);
+        Spinner spinnerNum=(Spinner)findViewById(R.id.spinner_songs_num);
+        Integer[] items = new Integer[]{1,2,3,4,5};
+        ArrayAdapter<Integer> numAdapter=new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,items);
+        spinnerNum.setAdapter(numAdapter);
+
+        Spinner spinnerArtist=(Spinner)findViewById(R.id.spinner_artist);
+        String[] category=new String[]{"Artist","Album"};
+        ArrayAdapter<String> catAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,category);
+        spinnerArtist.setAdapter(catAdapter);
+
+
+
 
         setSupportActionBar(toolbar);
         try {
